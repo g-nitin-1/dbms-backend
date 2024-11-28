@@ -18,7 +18,7 @@ const corsOptions = {
   credentials: true, // If you’re using cookies or Authorization headers
 };
 
-app.use(cors(corsOptions)); // Apply CORS middleware
+app.use("*",cors(corsOptions)); // Apply CORS middleware
 app.set("view engine", "ejs");
 app.set("views", "views");
 
@@ -39,7 +39,8 @@ app.use("/c", authController.is_company, companyRoutes);
 app.use("/a", authController.is_admin, adminRoutes);
 app.use(errorController.get404);
 
-app.listen(3000, '0.0.0.0', () => {
-  console.log('Server is running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('Server is running on port :${PORT}');
 });
 
