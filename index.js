@@ -11,14 +11,14 @@ const authController = require("./controllers/auth");
 const errorController = require("./controllers/error");
 
 const app = express();
-
+app.use(cors());
 app.set("view engine", "ejs");
 app.set("views", "views");
 
 const studentRoutes = require("./Routes/student");
 const companyRoutes = require("./Routes/company");
 const adminRoutes = require("./Routes/admin");
-app.use(cors());
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, "public")));
