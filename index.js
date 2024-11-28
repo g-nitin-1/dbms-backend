@@ -11,7 +11,14 @@ const authController = require("./controllers/auth");
 const errorController = require("./controllers/error");
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: "*", // Allows requests from all origins
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+  credentials: true, // If you’re using cookies or Authorization headers
+};
+
+app.use(cors(corsOptions)); // Apply CORS middleware
 app.set("view engine", "ejs");
 app.set("views", "views");
 
